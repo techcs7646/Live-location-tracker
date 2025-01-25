@@ -1,0 +1,127 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  /* Header styling */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #007BFF; /* Blue background */
+    color: white; /* White text color */
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: 10px; /* Add spacing between wrapped elements */
+  }
+  
+  /* Map container styling */
+  #map {
+    flex: 1;
+    height: calc(100vh - 60px); /* Full height minus header height */
+    width: 100%; /* Ensure full width */
+    max-width: 100%; /* Prevent overflow */
+  }
+  
+  /* Location info box styling */
+  .location-info {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+    color: white; /* White text */
+    padding: 10px 20px;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    animation: fadeIn 1.5s ease-in-out; /* Fade-in animation */
+    max-width: 90%; /* Prevent overflow on small screens */
+    word-wrap: break-word; /* Handle long text */
+  }
+  
+  /* Button styling */
+  button {
+    background-color: white; /* White background */
+    color: #007BFF; /* Blue text */
+    border: 2px solid #007BFF; /* Blue border */
+    padding: 8px 15px;
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer;
+    transition: all 0.3s; /* Smooth transition effect */
+    min-width: 44px; /* Minimum touch target size */
+    min-height: 44px;
+  }
+  
+  button:hover {
+    background-color: #007BFF; /* Blue background on hover */
+    color: white; /* White text on hover */
+  }
+  
+  /* Fade-in animation for location info box */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px); /* Start slightly below */
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0); /* End at original position */
+    }
+  }
+  
+  /* Live location pointer animation */
+  .pulse {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 0, 0, 0.6); /* Red color with transparency */
+    border-radius: 50%; /* Circle shape */
+    animation: pulse-animation 1.5s infinite; /* Infinite pulse effect */
+    position: absolute;
+    transform: translate(-50%, -50%); /* Center the circle on the marker */
+  }
+  
+  /* Keyframe animation for pulsing effect */
+  @keyframes pulse-animation {
+    0% {
+      transform: scale(1); /* Normal size */
+      opacity: 1; /* Fully visible */
+    }
+    100% {
+      transform: scale(3); /* Enlarged size */
+      opacity: 0; /* Fully transparent */
+    }
+  }
+  
+  /* Add responsive design with media queries */
+  @media screen and (max-width: 768px) {
+    .header {
+      padding: 10px;
+    }
+    
+    button {
+      width: 100%; /* Full width buttons on mobile */
+      margin: 5px 0;
+    }
+    
+    .location-info {
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 85%;
+      font-size: 14px;
+    }
+  }
+  
+  @media screen and (min-width: 1200px) {
+    .header {
+      padding: 15px 40px;
+    }
+    
+    .location-info {
+      max-width: 400px;
+      font-size: 16px;
+    }
+  }
+  
